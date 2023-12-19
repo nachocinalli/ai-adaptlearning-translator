@@ -1,9 +1,10 @@
 import { APIKeyInput } from '@/components/APIKeyInput';
 import { CodeBlock } from '@/components/CodeBlock';
+import { FormatSelect } from '@/components/FormatSelect';
 import { LanguageSelect } from '@/components/LanguageSelect';
 import { ModelSelect } from '@/components/ModelSelect';
 import { TextBlock } from '@/components/TextBlock';
-import { OpenAIModel, TranslateBody } from '@/types/types';
+import { FormatMode, OpenAIModel, TranslateBody } from '@/types/types';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
@@ -14,6 +15,7 @@ export default function Home() {
   const [inputCode, setInputCode] = useState<string>('');
   const [outputCode, setOutputCode] = useState<string>('');
   const [model, setModel] = useState<OpenAIModel>('gpt-3.5-turbo');
+  const [format, setFormat] = useState<FormatMode>('csv');
   const [loading, setLoading] = useState<boolean>(false);
   const [hasTranslated, setHasTranslated] = useState<boolean>(false);
   const [apiKey, setApiKey] = useState<string>('');
@@ -54,6 +56,7 @@ export default function Home() {
       outputLanguage,
       inputCode,
       model,
+      format,
       apiKey,
     };
 
@@ -151,7 +154,7 @@ export default function Home() {
 
         <div className="mt-2 flex items-center space-x-2">
           <ModelSelect model={model} onChange={(value) => setModel(value)} />
-
+          <FormatSelect model={format} onChange={(value) => setFormat(value)} />
           <button
             className="w-[140px] cursor-pointer rounded-md bg-violet-500 px-4 py-2 font-bold hover:bg-violet-600 active:bg-violet-700"
             onClick={() => handleTranslate()}
@@ -166,7 +169,7 @@ export default function Home() {
             ? 'Translating...'
             : hasTranslated
             ? 'Output copied to clipboard!'
-            : 'Enter json and click "Translate"'}
+            : `Enter ${format} and click "Translate"`}
         </div>
 
         <div className="mt-6 flex w-full max-w-[1200px] flex-col justify-between sm:flex-row sm:space-x-4">
