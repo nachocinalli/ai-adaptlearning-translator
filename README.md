@@ -1,6 +1,6 @@
 # AI Adaptlearning Translator
 
-Use AI to translate adaptlearning json files from one language to another.
+Use AI to translate adaptlearning csv/json files from one language to another.
 
 ![AI Adaptlearning Translator](./public/screenshot.png)
 
