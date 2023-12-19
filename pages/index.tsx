@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/CodeBlock';
 import { FormatSelect } from '@/components/FormatSelect';
 import { LanguageSelect } from '@/components/LanguageSelect';
 import { ModelSelect } from '@/components/ModelSelect';
-import { TextBlock } from '@/components/TextBlock';
+
 import { FormatMode, OpenAIModel, TranslateBody } from '@/types/types';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
